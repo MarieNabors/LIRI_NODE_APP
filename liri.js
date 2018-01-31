@@ -1,13 +1,15 @@
-require("dotenv").config();
+require('.env').config();
 
 var myKeys = require('./keys.js');
 
 var Twitter = require('twitter');
 
+var spotify = require('spotify');
+
 var marieTweets = function(){
 
-}
-//var spotify = new Spotify(myKeys.spotify);
+
+var spotify = new Spotify(myKeys.spotify);
 var client = new Twitter(myKeys.twitter);
  
  
@@ -22,42 +24,38 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	    	console.log(" ");
 	    	console.log(tweets[i].text);
 	    }
-	} else {
-		console.log(error);
+	}	
+});
+}
 
-	}
+var searchSpotify = function(songTitle) {
 
+ 
+spotify.search({ type: 'track', query: 'dancing in the moonlight' }, 
+	function(err, data) {
+    if ( err ) {
+        console.log('Error occurred: ' + err);
+        return;
+    }
+ 
+    console.log(data);
 });
 
-var doThis = function(caseData, functionData){
-	switch(caseData){
-		case 'my-tweets' :
-		marieTweets();
-		break;
-		default: 
-		console.log("LIRI doesn't know that.")
+var queries = function(caseOne, functionOne){
+	switch(caseOne){
+		case "my-tweets" :
+			marieTweets();
+			break;
+		case "spotify-this-song":
+			searchSpotify(functionOne)
+			break;
+		default:
+		console.log("LIRI doesn't know that.");
 
 	}
 }
-var tryThis = function(ArgumentOne, ArgumentTwo)
-	doThis(ArgumentOne, ArgumentTwo)
-
+var commandPasser = function(firstArgument,secondArgument){
+	queries(firstArgument,secondArgument);
 };
-
-//make commands so liri can recognize them (step 10)
-
-// if(process.argv[2]=="my-tweets"){
-	
-// }
-
-// if(process.argv[2]=="spotify-this-song"){
-
-// }
-
-// if(process.argv[2]=="movie-this"){
-
-// }
-
-// if(process.argv[2]=="do-what-it-says"){
-
-// }
+}
+commandPasser(process.argv[2], process.argv[3]);
