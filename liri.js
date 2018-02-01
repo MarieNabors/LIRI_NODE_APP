@@ -112,8 +112,8 @@ spotify.search({ type: 'track', query: songTitle },
 
 var randomText = function(){
 	fs.readFile('random.txt', 'utf8', function (error, data) {
-		if ( err ) {
-		        console.log('Error occurred: ' + err);
+		if (!error) {
+		        console.log("marieRocks");
 		var newArray = data.split(",")
 		if(newArray.length == 2){
 			queries(newArray[0],newArray[1]);
@@ -121,7 +121,7 @@ var randomText = function(){
 
 }
 });
-
+}
 var queries = function(caseOne, functionOne){
 	switch(caseOne){
 		case "my-tweets" :
