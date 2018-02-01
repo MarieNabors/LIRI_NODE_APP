@@ -82,9 +82,9 @@ spotify.search({ type: 'track', query: songTitle },
     }
 
     request('http://www.omdbapi.com/?t=' + filmTitle + '&y=&plot=short&r=json&apikey=40e9cece',
-    
+    function(error, response, body  ) {
 
-    if (!error && response.statusCode === 200) {
+    if(!error && response.statusCode === 200) {
         console.log("\n---------------------------------------------------\n")
         console.log("Film Title: " + JSON.parse(body).Title);
         console.log(" ");
@@ -100,11 +100,11 @@ spotify.search({ type: 'track', query: songTitle },
         console.log(" ");
         console.log("Cast: " + JSON.parse(body).Actors);
 		console.log(" ");
-        console.log("Rotten Tomatoes: " + JSON.parse(body).tomatoRatings[1].Value);
+        console.log("Rotten Tomatoes: " + JSON.parse(body).Ratings[1].Value);
  		console.log("\n---------------------------------------------------\n")
        
       }
-    );
+    });
 
 }
 
@@ -118,8 +118,8 @@ var queries = function(caseOne, functionOne){
 			break;
 			default:
 			console.log("LIRI doesn't know that.");
-		case "film-search"
-			movies(filmTitle);
+		case "film-search" :
+			movies(functionOne);
 
 	}
 }
