@@ -80,6 +80,16 @@ var queries = function(caseOne, functionOne){
 			break;
 		default:
 		console.log("LIRI doesn't know that.");
+		case "spotify-this-song":
+		if (process.argv[3] == null) {
+		var song = "The Sign Ace of Base";
+		searchSpotify(song);
+		break;
+		}
+		else {
+		searchspotify(functionOne);
+	break;
+	}
 
 	}
 }
