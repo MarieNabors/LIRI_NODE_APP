@@ -83,8 +83,6 @@ spotify.search({ type: 'track', query: songTitle },
 
     request('http://www.omdbapi.com/?t=' + filmTitle + '&y=&plot=short&r=json&apikey=40e9cece',
     
-    request(queryUrl, function(error, response, body  ) {
-    
 
     if (!error && response.statusCode === 200) {
         console.log("\n---------------------------------------------------\n")
@@ -106,7 +104,7 @@ spotify.search({ type: 'track', query: songTitle },
  		console.log("\n---------------------------------------------------\n")
        
       }
-    }));
+    );
 
 }
 
