@@ -120,7 +120,7 @@ var randomText = function(){
 		}
 
 }
-})
+});
 
 var queries = function(caseOne, functionOne){
 	switch(caseOne){
@@ -130,8 +130,9 @@ var queries = function(caseOne, functionOne){
 		case "spotify-this-song":
 			searchSpotify(functionOne)
 			break;
-		case "do-what-it-says"
+		case "do-what-it-says":
 			randomText(functionOne);
+			break;
 			default:
 			console.log("LIRI doesn't know that.");
 		case "film-search" :
