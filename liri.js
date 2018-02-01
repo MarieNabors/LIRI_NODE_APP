@@ -30,6 +30,9 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 var searchSpotify = function(songTitle) {
 
+		if (process.argv[3] == null) {
+		var songTitle = "The Sign Ace of Base";
+	}
  
 spotify.search({ type: 'track', query: songTitle }, 
 	function(err, data) {
@@ -80,16 +83,7 @@ var queries = function(caseOne, functionOne){
 			break;
 		default:
 		console.log("LIRI doesn't know that.");
-		case "spotify-this-song":
-		if (process.argv[3] == null) {
-		var song = "The Sign Ace of Base";
-		searchSpotify(song);
-		break;
-		}
-		else {
-		searchspotify(functionOne);
-	break;
-	}
+
 
 	}
 }
