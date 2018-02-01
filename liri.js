@@ -8,6 +8,8 @@ var Spotify = require('node-spotify-api');
 
 var request = require('request');
 
+var fs = require('fs');
+
 var spotify = new Spotify(myKeys.spotify);
 
 var client = new Twitter(myKeys.twitter);
@@ -108,6 +110,18 @@ spotify.search({ type: 'track', query: songTitle },
 
 }
 
+var randomText = function(){
+	fs.readFile('random.txt', 'utf8', function (error, data) {
+		if ( err ) {
+		        console.log('Error occurred: ' + err);
+		var newArray = data.split(",")
+		if(newArray.length == 2){
+			queries(newArray[0],newArray[1]);
+		}
+
+}
+})
+
 var queries = function(caseOne, functionOne){
 	switch(caseOne){
 		case "my-tweets" :
@@ -116,6 +130,8 @@ var queries = function(caseOne, functionOne){
 		case "spotify-this-song":
 			searchSpotify(functionOne)
 			break;
+		case "do-what-it-says"
+			randomText(functionOne);
 			default:
 			console.log("LIRI doesn't know that.");
 		case "film-search" :
